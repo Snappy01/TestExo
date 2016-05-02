@@ -19,7 +19,8 @@ namespace TestExo
         static IPEndPoint ServerEp;
         static string hh;
         static int index=0;
-        public List<string> MaListe = new List<string>();
+        public List<string> MaListeDevice = new List<string>();
+        public List<string> MaListeIpAddress = new List<string>();
         ListBox test;
         public UDPDiscovery(ListBox ListF1) 
         {
@@ -36,8 +37,7 @@ namespace TestExo
             
 
             string header = "14:00:00:00:01:04:00:03:00:00:46:52:4c:54:2d:4d:42:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00";
-
-
+            
             byte[] msg = header.Split(':').Select(s => Convert.ToByte(s, 16)).ToArray();
            
             var RequestData = msg;
@@ -51,10 +51,10 @@ namespace TestExo
             
        
 
-            for (int i = 0; i < MaListe.Count; ++i)
+            for (int i = 0; i < MaListeDevice.Count; ++i)
             {
 
-                Console.WriteLine(MaListe[i]);
+                Console.WriteLine(MaListeDevice[i]);
 
                
                // File.AppendAllText(@"C:\\Users\\MBOULHALFA\\Desktop\\discovery\\CHAO", MaListe[i], new UTF8Encoding());
@@ -80,7 +80,8 @@ namespace TestExo
            // hh = Regex.Replace(ServerResponse.ToString(), @"[^\u0000-\u007F]","");
             hh = TrimNonAscii(ServerResponse.ToString());
              //hh = Regex.Replace(ServerResponse.ToString()," ",".");
-            MaListe.Add(index+" > "+hh+"  [IP: "+ ServerEp.Address.ToString()+"]");
+            MaListeDevice.Add(index + " > " + hh);
+            MaListeIpAddress.Add(ServerEp.Address.ToString());
 
           
             

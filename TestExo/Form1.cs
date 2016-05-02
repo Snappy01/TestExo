@@ -14,12 +14,13 @@ namespace TestExo
     public partial class Form1 : Form
     {
         public UDPDiscovery Discover;
-
+        public string IpSelected, DevSelected;
 
         public Form1()
         { 
             InitializeComponent();
             Discover = new UDPDiscovery( ListBox);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,15 +30,16 @@ namespace TestExo
 
         private void DiscoverBtn_Click(object sender, EventArgs e)
         {
-            Discover.MaListe.Clear();
+            Discover.MaListeDevice.Clear();
             ListBox.DataSource = null;
             Discover.DiscoveryGo();
             // ListBox.Items.Clear();
 
 
             //ListBox.Text = "";
-            ListBox.DataSource = Discover.MaListe;
+            ListBox.DataSource = Discover.MaListeDevice;
 
+            CheckUp.Enabled = true;
             //Discover.Liste();
 
         }
@@ -51,12 +53,29 @@ namespace TestExo
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(ListBox.SelectedIndex);
+            
+            Result.Text = String.Format("{0} ||Adresse: {1}", Discover.MaListeDevice[ListBox.SelectedIndex], Discover.MaListeIpAddress[ListBox.SelectedIndex]);
+            IpSelected = Discover.MaListeIpAddress[ListBox.SelectedIndex];
+            DevSelected = Discover.MaListeDevice[ListBox.SelectedIndex];
 
-            Result.Text = Discover.MaListe[ListBox.SelectedIndex];
 
 
         }
+
+        private void CheckUp_Click(object sender, EventArgs e)
+        {
+            Result.Text = "Waiting CheckUp running ... ";
+          
+          
+
+        }
+
+        private void Result_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
       
        

@@ -36,6 +36,7 @@
             this.DiscoverBtn = new System.Windows.Forms.Button();
             this.IpManual = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.TextBox();
+            this.CheckUp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // directorySearcher1
@@ -78,7 +79,7 @@
             // 
             // IpManual
             // 
-            this.IpManual.Location = new System.Drawing.Point(842, 283);
+            this.IpManual.Location = new System.Drawing.Point(12, 406);
             this.IpManual.Name = "IpManual";
             this.IpManual.Size = new System.Drawing.Size(174, 78);
             this.IpManual.TabIndex = 2;
@@ -88,17 +89,30 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(278, 378);
+            this.Result.Location = new System.Drawing.Point(209, 283);
             this.Result.Multiline = true;
             this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(411, 134);
+            this.Result.Size = new System.Drawing.Size(626, 201);
             this.Result.TabIndex = 3;
+            this.Result.TextChanged += new System.EventHandler(this.Result_TextChanged);
+            // 
+            // CheckUp
+            // 
+            this.CheckUp.Enabled = false;
+            this.CheckUp.Location = new System.Drawing.Point(841, 283);
+            this.CheckUp.Name = "CheckUp";
+            this.CheckUp.Size = new System.Drawing.Size(174, 78);
+            this.CheckUp.TabIndex = 4;
+            this.CheckUp.Text = "Launch Check Up";
+            this.CheckUp.UseVisualStyleBackColor = true;
+            this.CheckUp.Click += new System.EventHandler(this.CheckUp_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 524);
+            this.Controls.Add(this.CheckUp);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.IpManual);
             this.Controls.Add(this.DiscoverBtn);
@@ -121,6 +135,7 @@
         private System.Windows.Forms.Button IpManual;
         public System.Windows.Forms.ListBox ListBox;
         private System.Windows.Forms.TextBox Result;
+        private System.Windows.Forms.Button CheckUp;
     }
 }
 
