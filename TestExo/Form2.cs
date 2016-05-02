@@ -21,13 +21,25 @@ namespace TestExo
 
         }
 
-       
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         
         private void BtnManualIpGO_Click_1(object sender, EventArgs e)
         {
 
+            if (textBox1.Modified)
+            {
+
+
+            }
+            else { MessageBox.Show("Veuillez saisir une adresse Valide.","Error",MessageBoxButtons.OK); }
+
         }
+
+        
 
        
     }

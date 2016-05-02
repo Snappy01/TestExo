@@ -48,10 +48,11 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(175, 22);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // BtnManualIpGO
             // 
-            this.BtnManualIpGO.Location = new System.Drawing.Point(89, 178);
+            this.BtnManualIpGO.Location = new System.Drawing.Point(88, 178);
             this.BtnManualIpGO.Name = "BtnManualIpGO";
             this.BtnManualIpGO.Size = new System.Drawing.Size(149, 63);
             this.BtnManualIpGO.TabIndex = 2;
