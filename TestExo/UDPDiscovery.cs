@@ -20,8 +20,12 @@ namespace TestExo
         static string hh;
         static int index=0;
         public List<string> MaListeDevice = new List<string>();
+        public List<Device> MesDevices = new List<Device>();
+        
         public List<string> MaListeIpAddress = new List<string>();
         ListBox test;
+
+
         public UDPDiscovery(ListBox ListF1) 
         {
 
@@ -50,7 +54,7 @@ namespace TestExo
             Thread.Sleep(500);
             
        
-
+            /*
             for (int i = 0; i < MaListeDevice.Count; ++i)
             {
 
@@ -60,6 +64,7 @@ namespace TestExo
                // File.AppendAllText(@"C:\\Users\\MBOULHALFA\\Desktop\\discovery\\CHAO", MaListe[i], new UTF8Encoding());
             
             }
+             */
             
             index = 0;
             
@@ -70,22 +75,17 @@ namespace TestExo
         {
             ++index;
             
-             var ServerResponseData = Client.EndReceive(ar, ref ServerEp);
-            //Console.WriteLine(Encoding.UTF8.GetString(ServerResponseData));
-
+            var ServerResponseData = Client.EndReceive(ar, ref ServerEp);
 
             var ServerResponse = Encoding.UTF8.GetString(ServerResponseData);
-            //hh = Regex.Replace(ServerResponse, @"\s\r\n?|\n", String.Empty);
-           // hh = ServerResponse.Replace("\u0000", "").Replace("\u0001", "").Replace("\u0002", "").Replace("\u0003", "").Replace("\u0004", "").Replace("\u0014", "").Replace("\u0015", "").Replace(@"[^\u0000-\u007F]", "").ToString();
-           // hh = Regex.Replace(ServerResponse.ToString(), @"[^\u0000-\u007F]","");
-            hh = TrimNonAscii(ServerResponse.ToString());
-             //hh = Regex.Replace(ServerResponse.ToString()," ",".");
-            MaListeDevice.Add(index + " > " + hh);
-            MaListeIpAddress.Add(ServerEp.Address.ToString());
 
+            hh = TrimNonAscii(ServerResponse.ToString());
           
+           // MaListeDevice.Add(index + " > " + hh);
+            //MaListeIpAddress.Add(ServerEp.Address.ToString());
+
+            MesDevices.Add(new Device(index + " > " + hh, ServerEp.Address.ToString()));
             
-           
             
             Client.BeginReceive(new AsyncCallback(Udp_IncomingData), ServerEp);
         }
@@ -97,9 +97,40 @@ namespace TestExo
              return reg_exp.Replace(value, "");
          }
 
-
-
-
-
+       
     }
+
+   public class Device 
+   
+   
+  {
+
+       public string dev{get;set;}
+       public string ip;
+
+
+
+       public Device(string dev, string ip)
+       {
+
+           this.dev = dev;    // this.dev because we talk about "dev" de la class Device
+           this.ip = ip;
+       
+       }
+       
+       public override string ToString()
+       {
+           string j;
+
+           j = String.Format("{0} at {1}", dev, ip);
+
+
+           return j;
+
+
+       }
+        
+        
+   
+   }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -37,6 +38,12 @@
             this.IpManual = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.TextBox();
             this.CheckUp = new System.Windows.Forms.Button();
+            this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // directorySearcher1
@@ -92,6 +99,7 @@
             this.Result.Location = new System.Drawing.Point(209, 283);
             this.Result.Multiline = true;
             this.Result.Name = "Result";
+            this.Result.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Result.Size = new System.Drawing.Size(626, 201);
             this.Result.TabIndex = 3;
             this.Result.TextChanged += new System.EventHandler(this.Result_TextChanged);
@@ -107,6 +115,18 @@
             this.CheckUp.UseVisualStyleBackColor = true;
             this.CheckUp.Click += new System.EventHandler(this.CheckUp_Click);
             // 
+            // deviceBindingSource1
+            // 
+            this.deviceBindingSource1.DataSource = typeof(TestExo.Device);
+            // 
+            // deviceBindingSource
+            // 
+            this.deviceBindingSource.DataSource = typeof(TestExo.Device);
+            // 
+            // deviceBindingSource2
+            // 
+            this.deviceBindingSource2.DataSource = typeof(TestExo.Device);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -121,6 +141,9 @@
             this.Name = "Form1";
             this.Text = "Dragon Tools";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +159,9 @@
         public System.Windows.Forms.ListBox ListBox;
         private System.Windows.Forms.TextBox Result;
         private System.Windows.Forms.Button CheckUp;
+        private System.Windows.Forms.BindingSource deviceBindingSource;
+        private System.Windows.Forms.BindingSource deviceBindingSource1;
+        private System.Windows.Forms.BindingSource deviceBindingSource2;
     }
 }
 
