@@ -10,17 +10,41 @@ namespace TestExo
     public class Socket
     {
 
-        public string Connect(string server, string message)
+
+        public TcpClient client;
+        public UDPDiscovery Discovery;
+
+        public Socket()
+        { 
+        
+
+       
+        
+        
+        }
+
+        public string Connect(string server, string device)
         {
           
           
            string test = null;
+           string temp = null; 
+           string temp1 = null;
+           string message = null;
+            /////////////////////////////////////////////////////////////////////
+           
+             
+            
+
+            
+////////////////////////////////////////////////////////////////////
+
             try
             {
 
 
-                TcpClient client = new TcpClient(server, 41795);
 
+                client = new TcpClient(server, 41795);
 
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
                //Thread.Sleep(1000);
@@ -31,7 +55,10 @@ namespace TestExo
 
                 stream.Write(data, 0, data.Length);
 
-                Console.WriteLine("Sent: {0}", message);
+
+
+                
+                //Console.WriteLine("Sent: {0}", message);
 
 
                 data = new Byte[1000];
@@ -44,11 +71,11 @@ namespace TestExo
 
                 responseData = Encoding.ASCII.GetString(data, 0, bytes);
                 test = responseData;
-                
 
+                temp = test.Substring(test.IndexOf(">")+1);
+                temp1 = temp.Remove(temp.LastIndexOf(Environment.NewLine));
 
-
-
+                //Console.WriteLine(temp1+Environment.NewLine);
 
                 message = "";
                 stream.Close();
@@ -63,7 +90,7 @@ namespace TestExo
                 Console.WriteLine("SocketException: {0}", e);
             }
 
-            return test;
+            return temp1;
 
         }
 

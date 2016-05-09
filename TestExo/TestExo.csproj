@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
+    <ApplicationIcon>IronDevil.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,11 @@
     </Compile>
     <Compile Include="Socket.cs" />
     <Compile Include="UDPDiscovery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IronDevil.ico" />
+    <Content Include="swirl500x500.ico" />
+    <Content Include="tools.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
