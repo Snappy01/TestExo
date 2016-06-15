@@ -16,43 +16,43 @@ namespace TestExo
     public partial class Form1 : Form
     {
         public UDPDiscovery Discover;
-        public string IpSelected, DevSelected, buf;
+        public string IpSelected, DevSelected,buf;
         public Socket tcp;
 
 
 
         public Form1()
-        {
+        { 
             InitializeComponent();
-            Discover = new UDPDiscovery(ListBox);
-            tcp = new Socket(this);
-
-
+            Discover = new UDPDiscovery( ListBox);
+            tcp = new Socket();
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
 
             Console.WriteLine("Debug Screen By Senseï Senzu.");
             this.AutoSize = true;
 
-
+            
 
         }
 
         private void DiscoverBtn_Click(object sender, EventArgs e)
         {
-
+           
             Discover.MaListeDevice.Clear();
             Discover.MesDevices.Clear();
             ListBox.DataSource = null;
             Discover.DiscoveryGo();
 
             ListBox.DataSource = Discover.MesDevices;
-            //ListBox.DisplayMember = "dev";
-
-
+                //ListBox.DisplayMember = "dev";
+               
+            
             //Discover.Liste();
 
         }
@@ -61,25 +61,27 @@ namespace TestExo
         {
             var form2 = new Diagnostic();
             form2.Show();
-
+            
         }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-
-            // Console.WriteLine(System.Net.Dns.GetHostAddresses().ToString());
+          
+           // Console.WriteLine(System.Net.Dns.GetHostAddresses().ToString());
             if (ListBox.SelectedIndex >= 0)
             {
                 CheckUp.Enabled = true;
-
+                
                 Result.Text = String.Format("{0}\n\nAdresse: {1}", Discover.MesDevices[ListBox.SelectedIndex].name, Discover.MesDevices[ListBox.SelectedIndex].ip);
-
+               
+                
+                
+                
                 IpSelected = Discover.MesDevices[ListBox.SelectedIndex].ip;
                 DevSelected = Discover.MesDevices[ListBox.SelectedIndex].name;
                 tcp.mydev = DevSelected;
-                tcp.ipdev = IpSelected;
-
+                
             }
 
 
@@ -88,36 +90,15 @@ namespace TestExo
 
         private void CheckUp_Click(object sender, EventArgs e)
         {
-
-            Console.WriteLine("Running CheckUp ... Please Wait ..");
-            DiscoverBtn.Enabled = false;
-            IpManual.Enabled = false;
-            CheckUp.Enabled = false;
-            
-            if (tcp.SendCommandDev())
-            {
-                Console.WriteLine("Checkup Complete !");
-                DiscoverBtn.Enabled = true;
-                IpManual.Enabled = true;
-                CheckUp.Enabled = true;
-
-
-            }
-            else {
-
-                Console.WriteLine("Error while running Checkup ..");
-
-                DiscoverBtn.Enabled = true;
-                IpManual.Enabled = true;
-                CheckUp.Enabled = true;
-
-            }
+            Result.Text = "Waiting CheckUp running ... ";
+            Result.Text="[WHO]\n"+tcp.Connect(IpSelected, "who\r")+"\n";
+            Result.AppendText(Environment.NewLine+"******************************"+"\n");
+            Result.AppendText("[IP Table]\n"+tcp.Connect(IpSelected, "ipt\r"));
+            Result.AppendText(Environment.NewLine + "******************************" + "\n");
+            Result.AppendText("[UP Time]" + Environment.NewLine + tcp.Connect(IpSelected, "uptime\r"));
+            Result.AppendText(Environment.NewLine + "******************************" + "\n");
             buf = Result.Text;
-
-
         }
-
-
 
         private void Result_TextChanged(object sender, EventArgs e)
         {
@@ -131,7 +112,7 @@ namespace TestExo
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -158,18 +139,18 @@ namespace TestExo
             this.Close();
         }
 
+        
 
+       
 
+        
 
+      
+       
+        
 
+      
 
-
-
-
-
-
-
-
-
+       
     }
 }

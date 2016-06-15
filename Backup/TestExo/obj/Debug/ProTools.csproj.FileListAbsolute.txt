@@ -1,0 +1,9 @@
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\bin\Debug\ProTools.exe
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\bin\Debug\ProTools.pdb
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\TestExo.Form1.resources
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\TestExo.Diagnostic.resources
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\ProTools.Properties.Resources.resources
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\ProTools.csproj.GenerateResource.Cache
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\ProTools.exe
+C:\Users\MBOULHALFA\Documents\Sauvegarde project\TestExo\Backup\TestExo\obj\Debug\ProTools.pdb

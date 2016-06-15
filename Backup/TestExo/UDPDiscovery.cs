@@ -29,19 +29,12 @@ namespace TestExo
 
         public UDPDiscovery(ListBox ListF1) 
         {
-           
-                ServerEp = new IPEndPoint(IPAddress.Any, 41794);
-                Client = new UdpClient(41794);
-
             
+            ServerEp = new IPEndPoint(IPAddress.Any, 41794);
+            Client = new UdpClient(41794);
+
 
             Client.BeginReceive(new AsyncCallback(Udp_IncomingData), ServerEp);
-
-
-
-
-
-
             test = ListF1;
 
             
@@ -51,12 +44,8 @@ namespace TestExo
                 testip.Add(address.ToString());
                 
             }
-
-
-
-          
-
-
+           
+           
 
 
         }
@@ -65,10 +54,6 @@ namespace TestExo
         public void DiscoveryGo()
         {
 
-            
-            TimeSpan timeout = TimeSpan.FromSeconds(2);
-            int i = 0;
-            var start = DateTime.Now;
             index = 0;
             string header = "14:00:00:00:01:04:00:03:00:00:46:52:4c:54:2d:4d:42:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00";
             
@@ -77,21 +62,13 @@ namespace TestExo
             var RequestData = msg;
 
            
-            
+
             Client.EnableBroadcast = true;
             Client.Send(RequestData, RequestData.Length, new IPEndPoint(IPAddress.Broadcast, 41794));
 
+            Thread.Sleep(500);
             
-
-            while (DateTime.Now.Subtract(start) < timeout) { }
-
-
-
-           
-
-            // Thread.Sleep(500);
-
-
+       
             /*
             for (int i = 0; i < MaListeDevice.Count; ++i)
             {
@@ -103,28 +80,23 @@ namespace TestExo
             
             }
              */
-
+            
             index = 0;
             
         }
 
     
-
-
-
          void Udp_IncomingData(IAsyncResult ar)
         {
             
             string j,hstname,realname,hostname,namedev;
             byte b = 0;
             
-            
+
             var ServerResponseData = Client.EndReceive(ar, ref ServerEp);
 
             var ServerResponse = Encoding.UTF8.GetString(ServerResponseData);
-
-
-            Console.WriteLine(ServerResponse);
+           
             //hh = TrimNonAscii(ServerResponse.ToString());
 
 
@@ -132,14 +104,10 @@ namespace TestExo
             j = ServerEp.Address.ToString();
             try
             {
-                if (ServerResponse.Length > 186 && !testip.Contains(j))
+                if (ServerResponseData.Length > 186 && !testip.Contains(j))
                 {
-                    
-                   hostname = Encoding.UTF8.GetString(ServerResponseData, 10, Array.IndexOf(ServerResponseData, b, 11));
-                   namedev = Encoding.UTF8.GetString(ServerResponseData, 186, Array.IndexOf(ServerResponseData, b, 187));//Name Device
-
-                  
-
+                    hostname = Encoding.UTF8.GetString(ServerResponseData, 10, Array.IndexOf(ServerResponseData, b, 11));
+                    namedev = Encoding.UTF8.GetString(ServerResponseData, 186, Array.IndexOf(ServerResponseData, b, 187));//Name Device
                     hstname = TrimNonAscii(hostname);
                     realname = TrimNonAscii(namedev);
                     
@@ -149,16 +117,14 @@ namespace TestExo
                     {
                         ++index;
                         MesDevices.Add(nDevice);
-                        Console.WriteLine(realname);
 
                     }
-                   
                 
                 }
                 }
             catch ( Exception e)
             {
-                Console.WriteLine("Notice: "+e.Message);
+                //Console.WriteLine(e.Message);
             }
 
            

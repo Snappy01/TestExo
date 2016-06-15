@@ -8,8 +8,8 @@
     <ProjectGuid>{FDB247DC-796B-4771-801A-430D11F6AD65}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestExo</RootNamespace>
-    <AssemblyName>TestExo</AssemblyName>
+    <RootNamespace>ProTools</RootNamespace>
+    <AssemblyName>ProTools</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Device.datasource" />
     <None Include="Properties\Settings.settings">

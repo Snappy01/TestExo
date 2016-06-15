@@ -47,7 +47,6 @@
             this.oupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.SendProg = new System.Windows.Forms.Button();
             this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -128,7 +127,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
             this.closeToolStripMenuItem});
@@ -150,7 +148,7 @@
             // saveAsDebugToolStripMenuItem
             // 
             this.saveAsDebugToolStripMenuItem.Name = "saveAsDebugToolStripMenuItem";
-            this.saveAsDebugToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.saveAsDebugToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.saveAsDebugToolStripMenuItem.Text = "Save as Debug ...";
             this.saveAsDebugToolStripMenuItem.Click += new System.EventHandler(this.saveAsDebugToolStripMenuItem_Click);
             // 
@@ -160,7 +158,7 @@
             this.sureToolStripMenuItem,
             this.oupsToolStripMenuItem});
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -169,20 +167,20 @@
             this.sureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.byeToolStripMenuItem});
             this.sureToolStripMenuItem.Name = "sureToolStripMenuItem";
-            this.sureToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.sureToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.sureToolStripMenuItem.Text = "Sure ?";
             // 
             // byeToolStripMenuItem
             // 
             this.byeToolStripMenuItem.Name = "byeToolStripMenuItem";
-            this.byeToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.byeToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.byeToolStripMenuItem.Text = "Bye :)";
             this.byeToolStripMenuItem.Click += new System.EventHandler(this.byeToolStripMenuItem_Click);
             // 
             // oupsToolStripMenuItem
             // 
             this.oupsToolStripMenuItem.Name = "oupsToolStripMenuItem";
-            this.oupsToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.oupsToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.oupsToolStripMenuItem.Text = "Oups";
             this.oupsToolStripMenuItem.Click += new System.EventHandler(this.oupsToolStripMenuItem_Click);
             // 
@@ -196,19 +194,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
-            // SendProg
-            // 
-            this.SendProg.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.SendProg.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.SendProg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.SendProg.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SendProg.Location = new System.Drawing.Point(842, 416);
-            this.SendProg.Name = "SendProg";
-            this.SendProg.Size = new System.Drawing.Size(174, 73);
-            this.SendProg.TabIndex = 6;
-            this.SendProg.Text = "Send Program";
-            this.SendProg.UseVisualStyleBackColor = true;
             // 
             // deviceBindingSource1
             // 
@@ -228,7 +213,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1028, 524);
-            this.Controls.Add(this.SendProg);
             this.Controls.Add(this.CheckUp);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.IpManual);
@@ -257,6 +241,7 @@
         private System.Windows.Forms.Button DiscoverBtn;
         private System.Windows.Forms.Button IpManual;
         public System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.TextBox Result;
         private System.Windows.Forms.Button CheckUp;
         private System.Windows.Forms.BindingSource deviceBindingSource;
         private System.Windows.Forms.BindingSource deviceBindingSource1;
@@ -270,8 +255,6 @@
         private System.Windows.Forms.ToolStripMenuItem byeToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        public System.Windows.Forms.TextBox Result;
-        private System.Windows.Forms.Button SendProg;
     }
 }
 
